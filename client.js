@@ -11,9 +11,8 @@ const connect = function () {
   });
   conn.on("connect", () => {
     console.log("connection successfully established!");
-    conn.write("name: SVC");
+    conn.write("Name: SVC");
   });
-
   return conn;
 };
 
