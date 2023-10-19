@@ -1,5 +1,11 @@
 let connection;
-
+const { MoveUp, MoveRight, MoveLeft, MoveDown } = require("./constants");
+const MoveKeys = {
+  w: MoveUp,
+  s: MoveDown,
+  a: MoveLeft,
+  d: MoveRight,
+};
 const setupInput = function (conn) {
   connection = conn;
   const stdin = process.stdin;
@@ -10,20 +16,12 @@ const setupInput = function (conn) {
   return stdin;
 };
 
-const handleUserInput = function (data) {
-  if (data === "\u0003") {
-    process.exit();
-  } else if (data === "w") {
-    connection.write("Move: up");
-  } else if (data === "a") {
-    connection.write("Move: left");
-  }else if (data === 's') {
-    connection.write('Move: down')
-  }else if (data === 'd') {
-    connection.write('Move: right')
-  } else if (data === 'q'){
-    connection.write('Say: lets go')
-  }
-};
+// const handleUserInput = function (data) {
+//   if (data === "\u0003") {
+//     process.exit();
+//   } else if (MoveKeys[data]) {
+//     connection.write(MOVEKEYS[data]);
+//   }
+// };
 
 module.exports = { setupInput };
